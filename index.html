@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Vincenzo!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #3a8d3a; /* Minecraft grass green */
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            overflow-y: auto; /* Allow scrolling if content is too tall */
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+            color: #fff;
+        }
+        .card {
+            background-color: #7d5a3c; /* Minecraft dirt brown */
+            border: 8px solid #4a3321;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5), inset 0 0 15px #00000080;
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            width: 90vw; /* Make width responsive */
+            max-width: 550px; /* Set a max-width */
+            margin: auto; /* Center the card */
+        }
+        .header {
+            background-color: #58a6f8; /* Minecraft sky blue */
+            padding: 15px; /* Reduced padding */
+            border-bottom: 8px solid #4a3321;
+        }
+        .header h1 {
+            font-size: 1.6rem; /* Reduced font size */
+            text-shadow: 3px 3px #333;
+            animation: bounce 1s infinite alternate;
+        }
+        .content {
+            padding: 25px; /* Reduced padding */
+        }
+        .code-block {
+            background-color: #222;
+            border: 4px dashed #555;
+            padding: 15px;
+            margin: 20px auto;
+            text-align: left;
+            font-size: 0.8rem;
+            white-space: pre-wrap;
+            border-radius: 8px;
+            color: #4CAF50;
+            max-width: 100%;
+        }
+        .minecraft-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .block {
+            width: 100%;
+            padding-bottom: 100%; /* Maintain square aspect ratio */
+            background-size: cover;
+            cursor: pointer;
+            border: 4px solid #333;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #fff;
+        }
+        /* UPDATED: Replaced broken external link with an embedded SVG for reliability */
+        .dirt { 
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj48cGF0aCBmaWxsPSJibGFjayIgZD0iTTQgNGgydjJINHoiLz48cGF0aCBmaWxsPSJibGFjayIgZD0iTTEwIDRoMnYyaC0yeiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNNiA2aDR2Mkg2eiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNNSA4aDJ2NEg1eiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNOSA4aDJ2NEg5eiIvPjwvc3ZnPg=='); 
+            background-color: #8B4513; 
+            background-size: 70%; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+        .stone { background-color: #808080; }
+        .diamond { background-color: #00BFFF; }
+        .creeper { 
+             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj48cGF0aCBmaWxsPSJibGFjayIgZD0iTTQgNGgydjJINHoiLz48cGF0aCBmaWxsPSJibGFjayIgZD0iTTEwIDRoMnYyaC0yeiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNNiA2aDR2Mkg2eiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNNSA4aDJ2NEg1eiIvPjxwYXRoIGZpbGw9ImJsYWNrIiBkPSJNOSA4aDJ2NEg5eiIvPjwvc3ZnPg==');
+            background-color: #2DC22B; 
+            background-size: 80%; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+
+        .message-box {
+            display: none;
+            background-color: rgba(0,0,0,0.8);
+            border: 6px solid #4a3321;
+            border-radius: 10px;
+            padding: 20px; /* Reduced padding */
+            margin-top: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(-5px); }
+            to { transform: translateY(5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-800 flex items-center justify-center h-screen">
+
+    <div class="card">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 id="birthday-title">Loading Birthday.exe...</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <p>Hey Vincenzo! Mine the blocks below to find your birthday surprise!</p>
+            
+            <!-- Code Snippet -->
+            <div class="code-block" id="code-block"></div>
+
+            <!-- Minecraft Mining Grid -->
+            <div class="minecraft-grid" id="minecraft-grid">
+                <!-- Blocks will be generated by JavaScript -->
+            </div>
+
+            <!-- Hidden Message Box -->
+            <div id="birthday-message" class="message-box">
+                <h2 class="text-2xl mb-4 text-cyan-400">DIAMOND FOUND!</h2>
+                <p>Happy 10th Birthday, Vincenzo! May your day be as awesome as finding a diamond block on the first try. Keep building amazing worlds and coding incredible things!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const codeBlock = document.getElementById('code-block');
+            const grid = document.getElementById('minecraft-grid');
+            const messageBox = document.getElementById('birthday-message');
+            const birthdayTitle = document.getElementById('birthday-title');
+
+            const code = `
+// Initialize birthday sequence
+function startBirthday(name, age) {
+    if (name === "Vincenzo" && age === 10) {
+        return "HAPPY BIRTHDAY!";
+    } else {
+        return "Not today...";
+    }
+}
+
+// Run program
+console.log(startBirthday("Vincenzo", 10));
+// Output: HAPPY BIRTHDAY!
+            `;
+
+            // Typing effect for the code
+            let i = 0;
+            function typeCode() {
+                if (i < code.length) {
+                    codeBlock.innerHTML += code.charAt(i);
+                    i++;
+                    setTimeout(typeCode, 20);
+                }
+            }
+
+            // Animate title and start typing effect
+            setTimeout(() => {
+                birthdayTitle.textContent = "Happy 10th Birthday!";
+                typeCode();
+            }, 1500);
+
+
+            // Generate Minecraft blocks
+            const totalBlocks = 12;
+            const diamondIndex = Math.floor(Math.random() * totalBlocks);
+            
+            for (let i = 0; i < totalBlocks; i++) {
+                const block = document.createElement('div');
+                block.classList.add('block');
+
+                if (i === diamondIndex) {
+                    block.classList.add('diamond');
+                    block.dataset.type = 'diamond';
+                } else {
+                    // Randomly assign dirt or stone
+                    block.classList.add(Math.random() > 0.4 ? 'dirt' : 'stone');
+                    block.dataset.type = 'common';
+                }
+                
+                block.addEventListener('click', () => {
+                    if (block.dataset.type === 'diamond') {
+                        messageBox.style.display = 'block';
+                         // Vibrate for 200ms on mobile devices, if supported
+                        if (window.navigator && window.navigator.vibrate) {
+                           window.navigator.vibrate(200);
+                        }
+                    } else {
+                        block.style.opacity = '0.3';
+                        block.style.cursor = 'not-allowed';
+                    }
+                });
+
+                grid.appendChild(block);
+            }
+        });
+    </script>
+
+</body>
+</html>
